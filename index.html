@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>QR‑Code‑Generator</title>
-  <meta name="description" content="Einfacher QR‑Code‑Generator: Text/URL eingeben, als PNG oder SVG herunterladen." />
+  <meta name="description" content="QR‑Code aus Text/URL erzeugen und als PNG herunterladen." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -42,7 +42,7 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row two">
         <div class="field">
           <label for="fgColor">Vordergrund</label>
           <input id="fgColor" type="color" value="#000000" />
@@ -65,18 +65,15 @@
 
       <div class="downloads">
         <button id="btnDownloadPNG" disabled>Als PNG herunterladen</button>
-        <button id="btnDownloadSVG" disabled>Als SVG herunterladen</button>
       </div>
     </section>
   </main>
 
   <footer class="app-footer">
-    <p>
-      Lokal laufend • Keine Datenübertragung •
-      <span class="mono">MIT‑Lizenzierte QR‑Lib eingebettet</span>
-    </p>
+    <p>100% lokal • Keine Datenübertragung • Robuste QR‑Bibliothek</p>
   </footer>
 
+  <script src="qrcode.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
