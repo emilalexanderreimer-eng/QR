@@ -1,1 +1,52 @@
-
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QR Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+ 
+  <main>
+    <h1>QR Generator</h1>
+    <p class="subtitle">Text oder URL in einen QR-Code umwandeln</p>
+ 
+    <div class="input-row">
+      <input
+        type="text"
+        id="qr-input"
+        placeholder="https://…"
+        autocomplete="off"
+        spellcheck="false"
+        autofocus
+      />
+      <button id="generate-btn">Erstellen</button>
+    </div>
+ 
+    <div class="options-row">
+      <label for="size-select">Größe</label>
+      <select id="size-select">
+        <option value="128">128 px</option>
+        <option value="256" selected>256 px</option>
+        <option value="512">512 px</option>
+      </select>
+    </div>
+ 
+    <p id="error-msg" hidden class="error"></p>
+ 
+    <div id="qr-output" hidden>
+      <canvas id="qr-canvas"></canvas>
+      <button id="download-btn">PNG herunterladen</button>
+    </div>
+  </main>
+ 
+  <!--
+    qrcode-generator by Kazuhiko Arase (MIT)
+    Global: window.qrcode  (Kleinbuchstaben, kein Namespacing-Problem)
+    Kein Callback, kein Promise – synchrone API
+  -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
