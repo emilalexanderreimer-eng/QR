@@ -1,82 +1,50 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>QR‑Code‑Generator</title>
-  <meta name="description" content="Einfacher QR‑Code‑Generator: Text/URL eingeben, als PNG oder SVG herunterladen." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Einfacher QR-Code-Generator – Text oder URL eingeben, fertig." />
+  <title>QR Generator</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="app-header">
-    <h1>QR‑Code‑Generator</h1>
-    <p>Text oder URL eingeben, Stil wählen, QR‑Code herunterladen – alles lokal im Browser.</p>
-  </header>
-
-  <main class="app-main">
-    <section class="controls">
-      <div class="field">
-        <label for="inputText">Text/URL</label>
-        <textarea id="inputText" rows="4" placeholder="https://example.com oder beliebiger Text"></textarea>
-      </div>
-
-      <div class="row">
-        <div class="field">
-          <label for="size">Größe (px)</label>
-          <input id="size" type="number" min="128" max="2048" step="8" value="256" />
-        </div>
-
-        <div class="field">
-          <label for="margin">Rand (Quiet Zone)</label>
-          <input id="margin" type="number" min="0" max="64" step="1" value="4" />
-        </div>
-
-        <div class="field">
-          <label for="ecc">Fehlerkorrektur</label>
-          <select id="ecc">
-            <option value="L">L (ca. 7%)</option>
-            <option value="M" selected>M (ca. 15%)</option>
-            <option value="Q">Q (ca. 25%)</option>
-            <option value="H">H (ca. 30%)</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="field">
-          <label for="fgColor">Vordergrund</label>
-          <input id="fgColor" type="color" value="#000000" />
-        </div>
-        <div class="field">
-          <label for="bgColor">Hintergrund</label>
-          <input id="bgColor" type="color" value="#ffffff" />
-        </div>
-      </div>
-
-      <div class="actions">
-        <button id="btnGenerate" class="primary">QR‑Code erzeugen</button>
-        <button id="btnClear" class="ghost">Zurücksetzen</button>
-      </div>
-    </section>
-
-    <section class="preview">
-      <h2>Vorschau</h2>
-      <div id="qrContainer" class="qr-container" aria-live="polite"></div>
-
-      <div class="downloads">
-        <button id="btnDownloadPNG" disabled>Als PNG herunterladen</button>
-        <button id="btnDownloadSVG" disabled>Als SVG herunterladen</button>
-      </div>
-    </section>
+ 
+  <main>
+    <header>
+      <h1>QR Generator</h1>
+      <p class="subtitle">Text oder URL in einen QR-Code umwandeln</p>
+    </header>
+ 
+    <div class="input-row">
+      <input
+        type="text"
+        id="qr-input"
+        placeholder="https://…"
+        autocomplete="off"
+        spellcheck="false"
+        autofocus
+      />
+      <button id="generate-btn">Erstellen</button>
+    </div>
+ 
+    <div class="options-row">
+      <label for="size-select">Größe</label>
+      <select id="size-select">
+        <option value="128">128 px</option>
+        <option value="256" selected>256 px</option>
+        <option value="512">512 px</option>
+      </select>
+    </div>
+ 
+    <p id="error-msg" hidden class="error">Bitte einen Text oder eine URL eingeben.</p>
+ 
+    <div id="qr-output" hidden>
+      <div id="qr-canvas-wrapper"></div>
+      <button id="download-btn">PNG herunterladen</button>
+    </div>
   </main>
-
-  <footer class="app-footer">
-    <p>
-      Lokal laufend • Keine Datenübertragung •
-      <span class="mono">MIT‑Lizenzierte QR‑Lib eingebettet</span>
-    </p>
-  </footer>
-
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
