@@ -3,17 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Einfacher QR-Code-Generator – Text oder URL eingeben, fertig." />
   <title>QR Generator</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
  
   <main>
-    <header>
-      <h1>QR Generator</h1>
-      <p class="subtitle">Text oder URL in einen QR-Code umwandeln</p>
-    </header>
+    <h1>QR Generator</h1>
+    <p class="subtitle">Text oder URL in einen QR-Code umwandeln</p>
  
     <div class="input-row">
       <input
@@ -36,15 +33,16 @@
       </select>
     </div>
  
-    <p id="error-msg" hidden class="error">Bitte einen Text oder eine URL eingeben.</p>
+    <p id="error-msg" hidden class="error"></p>
  
     <div id="qr-output" hidden>
-      <div id="qr-canvas-wrapper"></div>
+      <canvas id="qr-canvas"></canvas>
       <button id="download-btn">PNG herunterladen</button>
     </div>
+ 
   </main>
  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
